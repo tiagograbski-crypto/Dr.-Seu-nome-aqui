@@ -1,0 +1,63 @@
+/*
+ * COGNITIVE COLOR SYSTEM — A Clínica
+ * ==================================
+ *
+ * Layer 1 · FOUNDATION (trust & depth)
+ *   espresso  #1A1717  → Primary canvas. Evokes authority, intimacy, premium clinic.
+ *   charcoal  #241F1F  → Elevated surfaces (cards). Creates depth without harsh contrast.
+ *   elevated  #2A2525  → Hover/active states. Signals interactivity subtly.
+ *
+ * Layer 2 · CONTENT (readability hierarchy)
+ *   pearl     #F4EBEB  → Headlines & primary text. Maximum legibility on dark base.
+ *   muted     #BEB1B1  → Body copy & secondary info. Reduces cognitive load vs. pure white.
+ *
+ * Layer 3 · ACTION (conversion & emotion)
+ *   rose-nude #D5AEAE  → CTAs, accents, highlights. Warmth + femininity without aggression.
+ *                        Triggers "care" and "luxury" associations in aesthetic niche.
+ *
+ * Layer 4 · SEMANTIC MAPPING
+ *   Background page     → espresso
+ *   Card / panel        → charcoal
+ *   Heading             → pearl
+ *   Paragraph           → muted
+ *   CTA primary         → rose-nude bg + espresso text
+ *   CTA inverse         → espresso bg + rose-nude text
+ *   Border subtle       → rose-nude @ 10–20% opacity
+ *   Focus ring          → rose-nude @ 60% opacity
+ */
+
+:root {
+  --color-espresso: #1a1717;
+  --color-charcoal: #241f1f;
+  --color-elevated: #2a2525;
+  --color-rose-nude: #d5aeae;
+  --color-pearl: #f4ebeb;
+  --color-muted: #beb1b1;
+
+  --color-border-subtle: rgb(213 174 174 / 0.1);
+  --color-border-medium: rgb(213 174 174 / 0.2);
+  --color-border-strong: rgb(213 174 174 / 0.3);
+
+  --shadow-card: 0 20px 40px rgb(0 0 0 / 0.4);
+  --shadow-elevated: 0 10px 30px rgb(0 0 0 / 0.5);
+  --shadow-cta: 0 15px 40px -10px rgb(213 174 174 / 0.5);
+
+  --header-offset: 7rem;
+  --touch-target: 2.75rem;
+  --section-px: 1rem;
+  --section-py: 4rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-px: 1.5rem;
+    --section-py: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: 5rem;
+    --section-py: 6rem;
+  }
+}
