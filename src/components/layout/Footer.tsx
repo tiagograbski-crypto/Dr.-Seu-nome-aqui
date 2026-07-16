@@ -1,6 +1,7 @@
 import { Clock, Instagram, MapPin, MessageCircle } from 'lucide-react';
 import { SITE, WHATSAPP_LINK } from '../../config/site';
 import { scrollToSection } from '../../hooks/useScrollReveal';
+import { BrandMark } from '../ui/BrandMark';
 
 const FOOTER_NAV = [
   { id: 'protocol', label: 'A Metodologia' },
@@ -16,13 +17,18 @@ export function Footer() {
     <footer className="w-full bg-espresso pt-16 sm:pt-20 pb-[max(2.5rem,env(safe-area-inset-bottom))] border-t border-charcoal section-shell safe-bottom">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-8 mb-12 sm:mb-16">
         <div className="col-span-1 reveal-on-scroll">
-          <h2 className="text-pearl tracking-[0.3em] uppercase text-sm font-light mb-6">{name}</h2>
+          <h2 className="tracking-[0.2em] uppercase text-sm font-light mb-6">
+            <BrandMark
+              prefixClassName="text-rose-nude font-medium"
+              nameClassName="text-pearl font-light"
+            />
+          </h2>
           <p className="text-muted text-xs leading-relaxed mb-8 pr-4">{tagline}</p>
           <div className="flex items-center gap-4">
             <a
               href="#"
               className="text-muted hover:text-rose-nude transition-all hover:scale-110 touch-target flex items-center justify-center"
-              aria-label="Instagram da clínica"
+              aria-label="Instagram"
             >
               <Instagram size={18} aria-hidden="true" />
             </a>
@@ -31,7 +37,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-rose-nude transition-all hover:scale-110 touch-target flex items-center justify-center"
-              aria-label="WhatsApp da clínica"
+              aria-label="WhatsApp"
             >
               <MessageCircle size={18} aria-hidden="true" />
             </a>

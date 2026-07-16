@@ -18,11 +18,11 @@ export function SpecialistSection() {
 
           <div className="relative w-full h-full rounded-sm overflow-hidden border border-rose-nude/20">
             <img
-              src={doctor.image}
-              alt={`${doctor.name}, ${doctor.title}`}
+              src={SITE.doctor.image.defaultJpg}
+              alt={`${SITE.doctor.name}, ${SITE.doctor.title}`}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover object-center filter grayscale blur-[1px] transition-all duration-1000 group-hover:grayscale-0 group-hover:blur-0 group-hover:scale-105"
+              className="w-full h-full object-cover object-center transition-all duration-1000 [@media(hover:hover)]:grayscale [@media(hover:hover)]:blur-[1px] [@media(hover:hover)]:group-hover:grayscale-0 [@media(hover:hover)]:group-hover:blur-0 [@media(hover:hover)]:group-hover:scale-105"
             />
             <div
               className="absolute inset-0 bg-gradient-to-t from-espresso via-transparent to-transparent opacity-80"

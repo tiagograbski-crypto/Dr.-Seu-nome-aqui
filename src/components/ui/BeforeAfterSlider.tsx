@@ -9,6 +9,13 @@ interface BeforeAfterSliderProps {
   delay: number;
   /** Fine-tune crop alignment when antes/depois share the same frame (e.g. lips). */
   objectPosition?: string;
+  beforeObjectPosition?: string;
+  afterObjectPosition?: string;
+  afterScale?: number;
+}
+
+function toTransformOrigin(position: string): string {
+  return position.replace(/\bcenter\b/g, '50%');
 }
 
 const IMAGE_BASE =
@@ -21,6 +28,9 @@ export function BeforeAfterSlider({
   desc,
   delay,
   objectPosition = 'center center',
+  beforeObjectPosition,
+  afterObjectPosition,
+  afterScale = 1,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -83,7 +93,17 @@ export function BeforeAfterSlider({
     }
   }, [position]);
 
-  const imageStyle = { objectPosition };
+  const beforePosition = beforeObjectPosition ?? objectPosition;
+  const afterPosition = afterObjectPosition ?? objectPosition;
+  const beforeStyle = { objectPosition: beforePosition };
+  const afterStyle = {
+    objectPosition: afterPosition,
+    clipPath: 'inset(0 0 0 var(--position))',
+    ...(afterScale !== 1 && {
+      transform: `scale(${afterScale})`,
+      transformOrigin: toTransformOrigin(afterPosition),
+    }),
+  };
 
   return (
     <div
@@ -113,7 +133,7 @@ export function BeforeAfterSlider({
           decoding="async"
           draggable={false}
           className={`${IMAGE_BASE} ${isDragging ? '' : 'transition-[filter,opacity] duration-500 group-hover:opacity-100'}`}
-          style={imageStyle}
+          style={beforeStyle}
         />
 
         <img
@@ -123,10 +143,7 @@ export function BeforeAfterSlider({
           decoding="async"
           draggable={false}
           className={`${IMAGE_BASE} ${isDragging ? '' : 'transition-[filter,opacity] duration-500 group-hover:opacity-100'}`}
-          style={{
-            ...imageStyle,
-            clipPath: 'inset(0 0 0 var(--position))',
-          }}
+          style={afterStyle}
         />
 
         <div
@@ -152,7 +169,7 @@ export function BeforeAfterSlider({
           className="absolute top-4 right-4 z-10 bg-rose-nude/95 backdrop-blur-md px-3 py-1.5 rounded-sm border border-espresso/20 shadow-lg pointer-events-none transition-opacity duration-200"
           style={{ opacity: position < 80 ? 1 : 0 }}
         >
-          <span className="text-espresso text-[10px] uppercase tracking-widest font-bold">Depois</span>
+          <span className="text-pearl text-[10px] uppercase tracking-widest font-bold">Depois</span>
         </div>
 
         <p className="absolute bottom-4 left-0 right-0 text-center text-muted/80 text-[10px] uppercase tracking-widest pointer-events-none z-10">

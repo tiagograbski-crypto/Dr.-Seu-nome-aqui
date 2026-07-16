@@ -6,10 +6,6 @@ export function EmpathySection() {
           &ldquo;Você não precisa de mais um procedimento padronizado que altera a sua{' '}
           <span className="font-serif italic text-rose-nude">fisionomia natural.</span>&rdquo;
         </p>
-        <p className="text-muted mt-6 text-sm md:text-base leading-relaxed">
-          O que o seu rosto exige é uma arquitetura de tratamento que respeite a sua identidade e
-          devolva o controle para as suas mãos.
-        </p>
       </div>
     </section>
   );

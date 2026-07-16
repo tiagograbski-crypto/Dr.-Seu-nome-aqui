@@ -1,70 +1,55 @@
-import { BadgeCheck, Star } from 'lucide-react';
 import { REVIEWS } from '../../data/content';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-
-function ReviewCard({ review, className = '' }: { review: (typeof REVIEWS)[0]; className?: string }) {
-  return (
-    <article
-      className={`bg-charcoal p-5 sm:p-6 rounded-sm border border-rose-nude/10 shrink-0 transition-transform duration-500 hover:-translate-y-2 hover:bg-elevated ${className}`}
-    >
-      <div className="flex items-center gap-3 sm:gap-4 mb-4">
-        <div
-          className="w-10 h-10 rounded-full bg-rose-nude/20 flex items-center justify-center text-rose-nude font-bold text-sm shrink-0"
-          aria-hidden="true"
-        >
-          {review.name.charAt(0)}
-        </div>
-        <div className="min-w-0">
-          <div className="flex items-center gap-1.5">
-            <h3 className="text-pearl text-sm font-medium truncate">{review.name}</h3>
-            <BadgeCheck size={14} className="text-rose-nude shrink-0" aria-hidden="true" />
-          </div>
-          <p className="text-muted/70 text-[10px] truncate">
-            {review.time} • <span className="text-rose-nude">Paciente Verificada</span>
-          </p>
-        </div>
-      </div>
-      <div className="flex mb-4 gap-1" role="img" aria-label="5 estrelas">
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} size={14} className="text-rose-nude fill-rose-nude" aria-hidden="true" />
-        ))}
-      </div>
-      <blockquote className="text-muted text-xs leading-relaxed italic">
-        &ldquo;{review.text}&rdquo;
-      </blockquote>
-    </article>
-  );
-}
+import { GoogleLogo, GoogleReviewCard } from '../ui/GoogleReviewCard';
 
 export function ReviewsSection() {
   const reducedMotion = useReducedMotion();
 
   return (
     <section
+      id="reviews"
       className="w-full bg-espresso section-pad-y overflow-hidden border-b border-rose-nude/10"
       aria-labelledby="reviews-heading"
     >
-      <div className="max-w-7xl mx-auto section-shell mb-8 sm:mb-12 text-center reveal-on-scroll">
-        <p className="text-rose-nude text-[10px] uppercase tracking-[0.3em] mb-4">Experiência Real</p>
-        <h2 id="reviews-heading" className="text-pearl text-xl sm:text-2xl font-light tracking-wide text-balance">
-          O que dizem nossas clientes
-        </h2>
+      <div className="max-w-7xl mx-auto section-shell mb-8 sm:mb-10 reveal-on-scroll">
+        <div className="flex flex-col items-center text-center gap-4">
+          <div className="flex items-center gap-2">
+            <GoogleLogo className="w-5 h-5" />
+            <p className="text-[#70757a] text-xs font-medium tracking-wide">Avaliações no Google</p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="text-pearl text-3xl sm:text-4xl font-light tabular-nums">5,0</span>
+            <div className="flex flex-col items-start gap-1">
+              <div className="flex gap-0.5 text-[#FBBC04]" role="img" aria-label="5 estrelas">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-muted text-[11px]">{REVIEWS.length} avaliações</p>
+            </div>
+          </div>
+
+          <h2 id="reviews-heading" className="text-pearl text-xl sm:text-2xl font-light tracking-wide text-balance">
+            O que nossas clientes dizem no Google
+          </h2>
+        </div>
       </div>
 
-      {/* Mobile & tablet: swipeable cards */}
       <div
-        className="md:hidden section-shell flex gap-4 overflow-x-auto no-scrollbar snap-scroll-x pb-2 -mx-0"
-        aria-label="Depoimentos de pacientes — deslize para ver mais"
+        className="md:hidden section-shell flex gap-3 overflow-x-auto no-scrollbar snap-scroll-x pb-2"
+        aria-label="Avaliações no Google — deslize para ver mais"
       >
         {REVIEWS.map((review) => (
-          <ReviewCard key={review.name} review={review} className="w-[min(85vw,300px)] snap-start" />
+          <GoogleReviewCard key={review.name} review={review} className="w-[min(88vw,320px)] snap-start" />
         ))}
       </div>
 
-      {/* Desktop: infinite marquee */}
       <div
         className={`hidden md:flex relative overflow-x-hidden group ${reducedMotion ? 'flex-wrap justify-center gap-4 px-6' : ''}`}
-        aria-label="Depoimentos de pacientes"
+        aria-label="Avaliações no Google"
       >
         {(reducedMotion ? [0] : [0, 1]).map((wrapperIdx) => (
           <div
@@ -73,10 +58,10 @@ export function ReviewsSection() {
             aria-hidden={wrapperIdx === 1}
           >
             {REVIEWS.map((review) => (
-              <ReviewCard
+              <GoogleReviewCard
                 key={`${wrapperIdx}-${review.name}`}
                 review={review}
-                className="w-[300px] lg:w-[350px] mx-4"
+                className="w-[320px] lg:w-[340px] mx-3"
               />
             ))}
           </div>

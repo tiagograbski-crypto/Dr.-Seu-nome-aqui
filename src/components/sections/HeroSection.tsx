@@ -6,20 +6,27 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] w-full flex flex-col justify-end pb-[max(6rem,env(safe-area-inset-bottom))] sm:pb-24 px-4 sm:px-6 md:pb-32 overflow-hidden"
+      className="relative min-h-[100dvh] w-full flex flex-col justify-end pb-[max(6rem,env(safe-area-inset-bottom))] sm:pb-24 px-4 sm:px-6 md:pb-32 pt-[calc(3rem+env(safe-area-inset-top,0px))] md:pt-0 overflow-hidden"
       aria-label="Apresentação principal"
     >
       <div className="absolute inset-0 w-full h-full bg-espresso">
-        <div
-          className="absolute inset-0 opacity-40 bg-cover bg-center mix-blend-luminosity animate-[cinematicPan_30s_ease-in-out_infinite_alternate] origin-center scale-105"
-          style={{ backgroundImage: `url('${SITE.hero.backgroundImage}')` }}
-          role="img"
-          aria-label="Ambiente de clínica estética premium"
+        <img
+          src={SITE.hero.backgroundImage.defaultJpg}
+          alt="Cliente em ambiente de clínica estética premium"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover object-[center_22%] sm:object-[center_30%] md:object-center
+            opacity-65 sm:opacity-50 md:opacity-40
+            saturate-[1.08] sm:saturate-100
+            md:mix-blend-luminosity
+            animate-[cinematicPan_30s_ease-in-out_infinite_alternate] origin-center
+            scale-100 sm:scale-105 md:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/50 to-espresso/10 sm:via-espresso/65 md:via-espresso/60 md:to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full max-w-lg mx-auto md:max-w-3xl flex flex-col items-center text-center gap-8 animate-[fadeInUp_1.5s_ease-out_1.8s_both]">
+      <div className="relative z-10 w-full max-w-lg mx-auto md:max-w-3xl flex flex-col items-center text-center gap-8 animate-[fadeInUp_1.5s_ease-out_0.9s_both]">
         <h1 className="text-2xl leading-snug sm:text-4xl md:text-5xl font-light tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-pearl via-rose-nude to-pearl bg-[length:200%_auto] animate-[shimmerText_8s_linear_infinite] text-balance px-1">
           A engenharia estética{' '}
           <br className="hidden md:block" />

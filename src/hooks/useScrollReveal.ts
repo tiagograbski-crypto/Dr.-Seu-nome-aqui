@@ -1,5 +1,12 @@
 import { useEffect } from 'react';
 
+function observeRevealElements(observer: IntersectionObserver): void {
+  document.querySelectorAll('.reveal-on-scroll:not([data-reveal-observed])').forEach((el) => {
+    el.setAttribute('data-reveal-observed', 'true');
+    observer.observe(el);
+  });
+}
+
 export function useScrollReveal(isReady: boolean): void {
   useEffect(() => {
     if (!isReady) return;
@@ -15,13 +22,21 @@ export function useScrollReveal(isReady: boolean): void {
       { threshold: 0.15, rootMargin: '0px 0px -50px 0px' },
     );
 
-    const frame = requestAnimationFrame(() => {
-      document.querySelectorAll('.reveal-on-scroll').forEach((el) => observer.observe(el));
+    const frame = requestAnimationFrame(() => observeRevealElements(observer));
+
+    const mutationObserver = new MutationObserver(() => {
+      observeRevealElements(observer);
     });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       cancelAnimationFrame(frame);
+      mutationObserver.disconnect();
       observer.disconnect();
+      document.querySelectorAll('[data-reveal-observed]').forEach((el) => {
+        el.removeAttribute('data-reveal-observed');
+      });
     };
   }, [isReady]);
 }

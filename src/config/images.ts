@@ -22,9 +22,13 @@ export const IMAGES = {
     },
   },
   hero: {
-    background: '', // placeholder — add to public/images/hero/
+    background: {
+      defaultJpg: '/images/hero/capa 00.jpg',
+    },
   },
   especialista: {
-    portrait: '', // placeholder — add to public/images/especialista/
+    portrait: {
+      defaultJpg: '/images/especialista/portrait.jpg',
+    },
   },
 } as const;

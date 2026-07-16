@@ -46,6 +46,9 @@ export const PROCEDURES: Procedure[] = [
     before: IMAGES.portfolio.arquiteturaLabial.antes,
     after: IMAGES.portfolio.arquiteturaLabial.depois,
     objectPosition: 'center 42%',
+    beforeObjectPosition: 'center 42%',
+    afterObjectPosition: 'center 38%',
+    afterScale: 0.82,
   },
   {
     title: 'Banco de Colágeno',
@@ -58,27 +61,27 @@ export const PROCEDURES: Procedure[] = [
 export const REVIEWS: Review[] = [
   {
     name: 'Amanda Silva',
-    text: 'Resultados extremamente naturais. A mão da doutora é super leve, não senti dor na aplicação do botox.',
+    text: 'O resultado ficou tão natural que ninguém perguntou se eu tinha feito algo — só disseram que eu estava com o rosto mais descansado.',
     time: 'há 2 semanas',
   },
   {
     name: 'Letícia Costa',
-    text: 'A melhor clínica de São Paulo. Meu preenchimento labial ficou perfeito, exatamente como eu sonhava.',
+    text: 'Meu lábio ficou exatamente no ponto que eu queria: mais definido, mas ainda com a minha cara. Nada artificial.',
     time: 'há 1 mês',
   },
   {
     name: 'Roberta M.',
-    text: 'Atendimento impecável. A harmonização devolveu minha autoestima com muita elegância e naturalidade.',
+    text: 'Voltei a me reconhecer no espelho. A harmonização devolveu leveza ao meu rosto, com muita elegância.',
     time: 'há 3 meses',
   },
   {
     name: 'Juliana P.',
-    text: 'Profissionalismo e segurança. Explicou todo o protocolo antes. Amei o resultado do bioestimulador.',
+    text: 'Explicou cada etapa com calma e segurança. O bioestimulador trouxe firmeza sem mudar quem eu sou.',
     time: 'há 1 semana',
   },
   {
     name: 'Camila V.',
-    text: 'Ambiente luxuoso e acolhedor. O resultado do protocolo facial foi surpreendente e duradouro.',
+    text: 'Atendimento impecável do início ao fim. O resultado é sutil, duradouro e parece que sempre foi meu.',
     time: 'há 2 meses',
   },
 ];

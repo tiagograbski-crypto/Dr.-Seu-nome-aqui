@@ -1,4 +1,4 @@
-import { SITE } from '../../config/site';
+import { BrandMark } from '../ui/BrandMark';
 
 interface PreloaderProps {
   isLoading: boolean;
@@ -19,8 +19,12 @@ export function Preloader({ isLoading, onSkip }: PreloaderProps) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-charcoal via-espresso to-espresso animate-pulse" />
       <div className="relative z-10 flex flex-col items-center">
         <div className="w-px h-12 bg-gradient-to-b from-transparent via-rose-nude to-transparent mb-6 opacity-50 animate-[pulse_1s_ease-in-out_infinite]" />
-        <h1 className="text-muted tracking-[0.4em] uppercase text-sm font-light relative overflow-hidden group">
-          <span className="relative z-10">{SITE.name}</span>
+        <h1 className="tracking-[0.25em] uppercase text-sm font-light relative overflow-hidden group">
+          <BrandMark
+            className="relative z-10"
+            prefixClassName="text-rose-nude font-medium"
+            nameClassName="text-pearl font-light"
+          />
           <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-rose-nude to-transparent opacity-30 group-hover:animate-[shimmer_1s_infinite]" />
         </h1>
         <button

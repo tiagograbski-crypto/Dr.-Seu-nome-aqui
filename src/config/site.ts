@@ -1,18 +1,23 @@
+import { IMAGES } from './images';
+
 export const SITE = {
-  name: 'A Clínica',
-  tagline: 'Engenharia estética e harmonização facial de alto padrão.',
+  brand: {
+    prefix: 'Dra.',
+    fantasyName: 'Seu Nome Aqui',
+  },
+  name: 'Dra. Seu Nome Aqui',
+  tagline: 'Engenharia estética facial sob direção exclusiva. Naturalidade, precisão e resultado que parece seu.',
   doctor: {
-    name: 'Dra. Nome da Especialista',
+    name: 'Dra. Seu Nome Aqui',
     title: 'Especialista em Estética Avançada',
     crm: 'CRM/CRO 00000/SP',
     experienceYears: '10+',
-    image:
-      'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800&auto=format&fit=crop',
+    image: IMAGES.especialista.portrait,
   },
   contact: {
     phone: '(11) 99999-9999',
     whatsAppNumber: '5511999999999',
-    whatsAppMessage: 'Olá, gostaria de um atendimento exclusivo para avaliação.',
+    whatsAppMessage: 'Olá, Dra.! Gostaria de agendar uma avaliação exclusiva.',
     address: {
       street: 'Avenida Brigadeiro Faria Lima, 3064',
       district: 'Itaim Bibi — São Paulo, SP',
@@ -24,10 +29,9 @@ export const SITE = {
     cnpj: '00.000.000/0001-00',
   },
   hero: {
-    backgroundImage:
-      'https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=2000&auto=format&fit=crop',
+    backgroundImage: IMAGES.hero.background,
   },
-  preloaderDurationMs: 1800,
+  preloaderDurationMs: 800,
 } as const;
 
 export function buildWhatsAppLink(number: string, message: string): string {

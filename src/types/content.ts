@@ -5,7 +5,12 @@ export interface Procedure {
   desc: string;
   before: string;
   after: string;
+  /** Shared crop anchor when before/after overrides are not set. */
   objectPosition?: string;
+  beforeObjectPosition?: string;
+  afterObjectPosition?: string;
+  /** Scale the after image down (<1) when its source crop is tighter than antes. */
+  afterScale?: number;
 }
 
 export interface Review {

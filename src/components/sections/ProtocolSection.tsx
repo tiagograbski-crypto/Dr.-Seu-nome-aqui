@@ -1,4 +1,5 @@
 import { PROTOCOL_PILLARS } from '../../data/content';
+import { SITE } from '../../config/site';
 import { SectionHeading } from '../ui/SectionHeading';
 
 export function ProtocolSection() {
@@ -9,7 +10,12 @@ export function ProtocolSection() {
       aria-labelledby="protocol-heading"
     >
       <div className="max-w-4xl mx-auto">
-        <SectionHeading eyebrow="A Clínica" title="PROTOCOL" shimmer />
+        <SectionHeading
+          eyebrow={SITE.brand.prefix}
+          title="PROTOCOL"
+          description="O que o seu rosto exige é uma arquitetura de tratamento que respeite a sua identidade e devolva o controle para as suas mãos."
+          shimmer
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {PROTOCOL_PILLARS.map((item, idx) => (
