@@ -23,7 +23,7 @@ export const IMAGES = {
   },
   hero: {
     background: {
-      defaultJpg: '/images/hero/capa 00.jpg',
+      defaultJpg: '/images/hero/hero-cover.jpg',
     },
   },
   especialista: {

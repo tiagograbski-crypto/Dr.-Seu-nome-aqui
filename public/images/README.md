@@ -5,8 +5,7 @@ Estrutura oficial de arquivos estáticos servidos em `/images/`.
 ```
 public/images/
 ├── hero/
-│   ├── capa 00.jpg             # Capa principal do hero (mobile + desktop)
-│   └── background.jpg          # Legado — não usado em produção
+│   └── hero-cover.jpg          # Capa principal do hero (mobile + desktop)
 ├── especialista/
 │   └── portrait.jpg            # Retrato da diretora clínica
 └── portfolio/
@@ -21,6 +20,12 @@ public/images/
         └── depois.jpg
 ```
 
+Pastas locais (não versionadas):
+
+```
+public/images/_drafts/          # Rascunhos e alternativas de fotos
+```
+
 ## Convenções
 
 | Regra | Detalhe |
@@ -29,7 +34,7 @@ public/images/
 | **Nomenclatura** | Pastas numeradas `01-`, `02-`… + slug descritivo |
 | **Antes/depois** | Sempre `antes.jpg` e `depois.jpg` dentro da pasta do procedimento |
 | **Config** | Caminhos centralizados em `src/config/images.ts` |
-| **Não commitar** | Rascunhos ou alternativas — use pasta `_drafts/` local (gitignored) |
+| **Não commitar** | Rascunhos ou alternativas — use `_drafts/` local |
 
 ## Tamanhos recomendados
 

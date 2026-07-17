@@ -4,3 +4,7 @@ dist
 .DS_Store
 Thumbs.db
 tsconfig.tsbuildinfo
+
+# Local image drafts — not part of the published site
+public/images/_drafts/**
+!public/images/_drafts/.gitkeep
