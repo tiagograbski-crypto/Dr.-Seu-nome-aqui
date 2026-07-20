@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/Dr.-Seu-nome-aqui/',
+  // Local dev uses `/`. GitHub Actions sets VITE_BASE for project Pages.
+  base: process.env.VITE_BASE ?? '/',
   plugins: [react()],
 });
