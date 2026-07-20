@@ -16,10 +16,13 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -42,11 +45,28 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
 
+      - name: Publish production bundle on main root
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          cp dist/index.html index.html
+          rm -rf assets
+          cp -r dist/assets assets
+          rm -rf images
+          cp -r dist/images images
+          git add index.html assets images
+          if git diff --staged --quiet; then
+            echo "No production bundle changes to commit."
+          else
+            git commit -m "deploy: update production bundle on main [skip ci]"
+            git push
+          fi
+
       - name: Point GitHub Pages to gh-pages branch
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -euo pipefail
           gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" \
             --input - <<'EOF'
           {
