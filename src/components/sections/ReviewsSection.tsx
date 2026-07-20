@@ -1,6 +1,11 @@
 import { REVIEWS } from '../../data/content';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { GoogleLogo, GoogleReviewCard } from '../ui/GoogleReviewCard';
+import { MobileScrollCarousel } from '../ui/MobileScrollCarousel';
+
+function reviewSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
 
 export function ReviewsSection() {
   const reducedMotion = useReducedMotion();
@@ -38,13 +43,18 @@ export function ReviewsSection() {
         </div>
       </div>
 
-      <div
-        className="md:hidden section-shell flex gap-3 overflow-x-auto no-scrollbar snap-scroll-x pb-2"
-        aria-label="Avaliações no Google — deslize para ver mais"
-      >
-        {REVIEWS.map((review) => (
-          <GoogleReviewCard key={review.name} review={review} className="w-[min(88vw,320px)] snap-start" />
-        ))}
+      <div className="section-shell">
+        <MobileScrollCarousel
+          ariaLabel="Avaliações no Google — deslize para ver mais"
+          hintStorageKey="reviews-carousel-hint-seen"
+          slideClassName="w-[min(88vw,320px)] shrink-0 snap-start"
+          trackClassName="flex gap-3 overflow-x-auto no-scrollbar snap-scroll-x pb-2 -mx-1 px-1"
+          items={REVIEWS.map((review) => ({
+            id: reviewSlug(review.name),
+            label: review.name.split(' ')[0] ?? review.name,
+            content: <GoogleReviewCard review={review} className="w-full" />,
+          }))}
+        />
       </div>
 
       <div

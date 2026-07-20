@@ -1,8 +1,28 @@
 import { PROCEDURES } from '../../data/content';
 import { BeforeAfterSlider } from '../ui/BeforeAfterSlider';
+import { MobileScrollCarousel } from '../ui/MobileScrollCarousel';
 import { SectionHeading } from '../ui/SectionHeading';
 
 const SECONDARY_PROCEDURES = PROCEDURES.slice(1);
+
+function renderProcedureSlider(proc: (typeof SECONDARY_PROCEDURES)[number], delay: number) {
+  return (
+    <BeforeAfterSlider
+      before={proc.before}
+      after={proc.after}
+      title={proc.title}
+      desc={proc.desc}
+      delay={delay}
+      objectPosition={proc.objectPosition}
+      beforeObjectPosition={proc.beforeObjectPosition}
+      afterObjectPosition={proc.afterObjectPosition}
+      beforeScale={proc.beforeScale}
+      afterScale={proc.afterScale}
+      beforeTransformOrigin={proc.beforeTransformOrigin}
+      afterTransformOrigin={proc.afterTransformOrigin}
+    />
+  );
+}
 
 export function PortfolioSection() {
   return (
@@ -18,30 +38,15 @@ export function PortfolioSection() {
           description="Resultados reais. Deslize para explorar o comparativo entre a fisionomia inicial e o resgate elegante da sua naturalidade."
         />
 
-        {/* Mobile: carrossel horizontal */}
-        <div
-          className="md:hidden flex gap-6 overflow-x-auto no-scrollbar snap-scroll-x pb-2 -mx-1 px-1"
-          aria-label="Tratamentos — deslize para ver mais"
-        >
-          {SECONDARY_PROCEDURES.map((proc, idx) => (
-            <div key={proc.title} className="w-[min(88vw,340px)] shrink-0 snap-start">
-              <BeforeAfterSlider
-                before={proc.before}
-                after={proc.after}
-                title={proc.title}
-                desc={proc.desc}
-                delay={idx * 100}
-                objectPosition={proc.objectPosition}
-                beforeObjectPosition={proc.beforeObjectPosition}
-                afterObjectPosition={proc.afterObjectPosition}
-                beforeScale={proc.beforeScale}
-                afterScale={proc.afterScale}
-                beforeTransformOrigin={proc.beforeTransformOrigin}
-                afterTransformOrigin={proc.afterTransformOrigin}
-              />
-            </div>
-          ))}
-        </div>
+        <MobileScrollCarousel
+          ariaLabel="Tratamentos — deslize para ver mais"
+          hintStorageKey="portfolio-carousel-hint-seen"
+          items={SECONDARY_PROCEDURES.map((proc, idx) => ({
+            id: proc.title.toLowerCase().replace(/\s+/g, '-'),
+            label: proc.title,
+            content: renderProcedureSlider(proc, idx * 100),
+          }))}
+        />
 
         {/* Desktop: grid */}
         <div className="hidden md:grid md:grid-cols-2 gap-8 sm:gap-10">
