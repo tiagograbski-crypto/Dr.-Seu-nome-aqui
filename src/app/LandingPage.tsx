@@ -9,6 +9,7 @@ import { ProtocolSection } from '../components/sections/ProtocolSection';
 import { ReviewsSection } from '../components/sections/ReviewsSection';
 import { SpecialistSection } from '../components/sections/SpecialistSection';
 import { FloatingWhatsAppButton } from '../components/layout/FloatingWhatsAppButton';
+import { ShowroomNav } from '../components/layout/ShowroomNav';
 import { Footer } from '../components/layout/Footer';
 import { Header } from '../components/layout/Header';
 import { MobileBottomNav } from '../components/layout/MobileBottomNav';
@@ -51,6 +52,7 @@ export default function LandingPage() {
       </main>
 
       <Footer />
+      <ShowroomNav />
       <FloatingWhatsAppButton visible={fabVisible} isReady={!isLoading} />
     </div>
   );
