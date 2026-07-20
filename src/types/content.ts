@@ -9,8 +9,12 @@ export interface Procedure {
   objectPosition?: string;
   beforeObjectPosition?: string;
   afterObjectPosition?: string;
+  /** Scale the before image up when its source framing is wider. */
+  beforeScale?: number;
   /** Scale the after image down (<1) when its source crop is tighter than antes. */
   afterScale?: number;
+  beforeTransformOrigin?: string;
+  afterTransformOrigin?: string;
 }
 
 export interface Review {

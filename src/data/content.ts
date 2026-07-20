@@ -45,10 +45,8 @@ export const PROCEDURES: Procedure[] = [
     desc: 'Hidratação profunda e contorno sutil. Respeitamos as proporções áureas do seu rosto para um preenchimento indetectável.',
     before: IMAGES.portfolio.arquiteturaLabial.antes,
     after: IMAGES.portfolio.arquiteturaLabial.depois,
-    objectPosition: 'center 42%',
-    beforeObjectPosition: 'center 42%',
-    afterObjectPosition: 'center 38%',
-    afterScale: 0.82,
+    beforeScale: 1.164,
+    beforeTransformOrigin: 'center top',
   },
   {
     title: 'Banco de Colágeno',

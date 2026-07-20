@@ -34,7 +34,10 @@ export function PortfolioSection() {
                 objectPosition={proc.objectPosition}
                 beforeObjectPosition={proc.beforeObjectPosition}
                 afterObjectPosition={proc.afterObjectPosition}
+                beforeScale={proc.beforeScale}
                 afterScale={proc.afterScale}
+                beforeTransformOrigin={proc.beforeTransformOrigin}
+                afterTransformOrigin={proc.afterTransformOrigin}
               />
             </div>
           ))}
@@ -53,7 +56,10 @@ export function PortfolioSection() {
               objectPosition={proc.objectPosition}
               beforeObjectPosition={proc.beforeObjectPosition}
               afterObjectPosition={proc.afterObjectPosition}
+              beforeScale={proc.beforeScale}
               afterScale={proc.afterScale}
+              beforeTransformOrigin={proc.beforeTransformOrigin}
+              afterTransformOrigin={proc.afterTransformOrigin}
             />
           ))}
         </div>

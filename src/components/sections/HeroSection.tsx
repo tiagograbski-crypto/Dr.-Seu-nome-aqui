@@ -12,11 +12,11 @@ export function HeroSection() {
       <div className="absolute inset-0 w-full h-full bg-espresso">
         <img
           src={SITE.hero.backgroundImage.defaultJpg}
-          alt="Cliente em ambiente de clínica estética premium"
+          alt="Resultado natural de harmonização facial"
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover object-[center_22%] sm:object-[center_30%] md:object-center
+          className="absolute inset-0 w-full h-full object-cover object-[center_30%] sm:object-[center_35%] md:object-center
             opacity-65 sm:opacity-50 md:opacity-40
             saturate-[1.08] sm:saturate-100
             md:mix-blend-luminosity

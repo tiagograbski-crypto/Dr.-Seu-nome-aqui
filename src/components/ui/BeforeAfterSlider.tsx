@@ -11,7 +11,10 @@ interface BeforeAfterSliderProps {
   objectPosition?: string;
   beforeObjectPosition?: string;
   afterObjectPosition?: string;
+  beforeScale?: number;
   afterScale?: number;
+  beforeTransformOrigin?: string;
+  afterTransformOrigin?: string;
 }
 
 function toTransformOrigin(position: string): string {
@@ -30,7 +33,10 @@ export function BeforeAfterSlider({
   objectPosition = 'center center',
   beforeObjectPosition,
   afterObjectPosition,
+  beforeScale = 1,
   afterScale = 1,
+  beforeTransformOrigin,
+  afterTransformOrigin,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -95,13 +101,19 @@ export function BeforeAfterSlider({
 
   const beforePosition = beforeObjectPosition ?? objectPosition;
   const afterPosition = afterObjectPosition ?? objectPosition;
-  const beforeStyle = { objectPosition: beforePosition };
+  const beforeStyle = {
+    objectPosition: beforePosition,
+    ...(beforeScale !== 1 && {
+      transform: `scale(${beforeScale})`,
+      transformOrigin: beforeTransformOrigin ?? toTransformOrigin(beforePosition),
+    }),
+  };
   const afterStyle = {
     objectPosition: afterPosition,
     clipPath: 'inset(0 0 0 var(--position))',
     ...(afterScale !== 1 && {
       transform: `scale(${afterScale})`,
-      transformOrigin: toTransformOrigin(afterPosition),
+      transformOrigin: afterTransformOrigin ?? toTransformOrigin(afterPosition),
     }),
   };
 
