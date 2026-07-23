@@ -8,6 +8,7 @@ import { PortfolioSection } from '../components/sections/PortfolioSection';
 import { ProtocolSection } from '../components/sections/ProtocolSection';
 import { ReviewsSection } from '../components/sections/ReviewsSection';
 import { SpecialistSection } from '../components/sections/SpecialistSection';
+import { B2bOwnerGuideSection } from '../components/sections/B2bOwnerGuideSection';
 import { FloatingWhatsAppButton } from '../components/layout/FloatingWhatsAppButton';
 import { ShowroomNav } from '../components/layout/ShowroomNav';
 import { Footer } from '../components/layout/Footer';
@@ -52,6 +53,7 @@ export default function LandingPage() {
       </main>
 
       <Footer />
+      <B2bOwnerGuideSection />
       <ShowroomNav />
       <FloatingWhatsAppButton visible={fabVisible} isReady={!isLoading} />
     </div>

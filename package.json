@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --open index.dev.html",
+    "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },

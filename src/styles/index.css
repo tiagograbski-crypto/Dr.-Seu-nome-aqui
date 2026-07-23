@@ -2,6 +2,7 @@
 @import './animations.css';
 @import './utilities.css';
 @import './showroom-nav.css';
+@import './b2b-owner-guide.css';
 
 @tailwind base;
 @tailwind components;

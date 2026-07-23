@@ -15,8 +15,8 @@ export const SITE = {
     image: IMAGES.especialista.portrait,
   },
   contact: {
-    phone: '(11) 99999-9999',
-    whatsAppNumber: '5511999999999',
+    phone: '(11) 96424-5000',
+    whatsAppNumber: '5511964245000',
     whatsAppMessage: 'Olá, Dra.! Gostaria de agendar uma avaliação exclusiva.',
     address: {
       street: 'Avenida Brigadeiro Faria Lima, 3064',
