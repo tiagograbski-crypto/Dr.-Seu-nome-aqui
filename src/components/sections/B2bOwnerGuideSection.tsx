@@ -2,6 +2,8 @@ import { B2B_OWNER_GUIDE } from '../../config/b2bOwnerGuide';
 import { SHOWROOM_NAV } from '../../config/showroomNav';
 import { resolveWhatsAppNumber, sanitizeWhatsAppMessage } from '../../utils/contactUtils';
 
+const founderImage = `${import.meta.env.BASE_URL}images/thiago-grabski.webp`;
+
 function buildAcquireWhatsAppUrl(): string {
   const rawMessage = SHOWROOM_NAV.acquireMessage
     .replace(/\{contact\}/g, SHOWROOM_NAV.acquireContactName)
@@ -166,7 +168,7 @@ export function B2bOwnerGuideSection() {
         <div className="b2b-founder">
           <div className="b2b-avatar" role="img" aria-label={B2B_OWNER_GUIDE.founderName}>
             <img
-              src="/images/thiago-grabski.webp"
+              src={founderImage}
               alt={B2B_OWNER_GUIDE.founderName}
               width={112}
               height={112}
