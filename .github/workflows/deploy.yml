@@ -49,12 +49,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          cp dist/index.html index.html
           rm -rf assets
           cp -r dist/assets assets
           rm -rf images
           cp -r dist/images images
-          git add index.html assets images
+          git add assets images
           if git diff --staged --quiet; then
             echo "No production bundle changes to commit."
           else
