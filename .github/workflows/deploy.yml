@@ -65,6 +65,7 @@ jobs:
           fi
 
       - name: Point GitHub Pages to gh-pages branch
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
